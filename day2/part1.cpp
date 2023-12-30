@@ -22,35 +22,36 @@ int main() {
         for (char c : line) {
             if (isdigit(c)) {
                 cur = cur * 10 + (c - '0');
+                continue;
             }
 
-            if (c == ':') {
-                id = cur;
-                cur = 0;
-            }
-
-            if (c == 'r') {
-                if (cur > red_limit) {
-                    id = 0;
+            switch (c) {
+                case ':': {
+                    id = cur;
+                    cur = 0;
                     break;
                 }
-                cur = 0;
-            }
-
-            if (c == 'g') {
-                if (cur > green_limit) {
-                    id = 0;
+                case 'r': {
+                    if (cur > red_limit) {
+                        id = 0;
+                    }
+                    cur = 0;
                     break;
                 }
-                cur = 0;
-            }
-
-            if (c == 'b') {
-                if (cur > blue_limit) {
-                    id = 0;
+                case 'g': {
+                    if (cur > green_limit) {
+                        id = 0;
+                    }
+                    cur = 0;
                     break;
                 }
-                cur = 0;
+                case 'b': {
+                    if (cur > blue_limit) {
+                        id = 0;
+                    }
+                    cur = 0;
+                    break;
+                }
             }
         }
 
