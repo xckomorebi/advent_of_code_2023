@@ -20,25 +20,29 @@ int main() {
         for (char c : line) {
             if (isdigit(c)) {
                 cur = cur * 10 + (c - '0');
+                continue;
             }
 
-            if (c == ':') {
-                cur = 0;
-            }
-
-            if (c == 'r') {
-                red = max(red, cur);
-                cur = 0;
-            }
-
-            if (c == 'g') {
-                green = max(green, cur);
-                cur = 0;
-            }
-
-            if (c == 'b') {
-                blue = max(blue, cur);
-                cur = 0;
+            switch (c) {
+                case ':': {
+                    cur = 0;
+                    break;
+                }
+                case 'r': {
+                    red = max(red, cur);
+                    cur = 0;
+                    break;
+                }
+                case 'g': {
+                    green = max(green, cur);
+                    cur = 0;
+                    break;
+                }
+                case 'b': {
+                    blue = max(blue, cur);
+                    cur = 0;
+                    break;
+                }
             }
         }
 
